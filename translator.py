@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QTextBro
 from PyQt5.QtGui import QFont
 import sqlite3
 
-con = sqlite3.connect('morze_dictionary.db')
+con = sqlite3.connect('morse_dictionary.db')
 cur = con.cursor()
 
 
@@ -14,13 +14,13 @@ class Translator(QWidget):
 
         self.mnumbers, self.msymbols, self.mrussian, self.menglish = list(), list(), list(), list()
         self.copy = QTextBrowser(self)
-        for a in list(cur.execute("""SELECT morze_num FROM numbers""")):
+        for a in list(cur.execute("""SELECT morse_num FROM numbers""")):
             self.mnumbers.append(a[0])
-        for a in list(cur.execute("""SELECT morze_sym FROM symbols""")):
+        for a in list(cur.execute("""SELECT morse_sym FROM symbols""")):
             self.msymbols.append(a[0])
-        for a in list(cur.execute("""SELECT morze_letter FROM russian""")):
+        for a in list(cur.execute("""SELECT morse_letter FROM russian""")):
             self.mrussian.append(a[0])
-        for a in list(cur.execute("""SELECT morze_letter FROM english""")):
+        for a in list(cur.execute("""SELECT morse_letter FROM english""")):
             self.menglish.append(a[0])
 
         self.input = QTextEdit(self)
@@ -95,16 +95,16 @@ class Translator(QWidget):
                                 for letter in word.split():
                                     if letter in self.mnumbers:
                                         res += str(list(cur.execute(f"""SELECT number FROM numbers 
-                                        WHERE morze_num == '{letter}'"""))[0][0])
+                                        WHERE morse_num == '{letter}'"""))[0][0])
                                     elif letter in self.msymbols:
                                         res += str(list(cur.execute(f"""SELECT symbol FROM symbols 
-                                        WHERE morze_sym == '{letter}'"""))[0][0])
+                                        WHERE morse_sym == '{letter}'"""))[0][0])
                                     elif language2 == 'русский' and letter in self.mrussian:
                                         res += str(list(cur.execute(f"""SELECT rus_letter FROM 
-                                        russian WHERE morze_letter == '{letter}'"""))[0][0])
+                                        russian WHERE morse_letter == '{letter}'"""))[0][0])
                                     elif language2 == 'английский' and letter in self.menglish:
                                         res += str(list(cur.execute(f"""SELECT eng_letter FROM 
-                                        english WHERE morze_letter == '{letter}'"""))[0][0])
+                                        english WHERE morse_letter == '{letter}'"""))[0][0])
                                     else:
                                         self.output.setText('Ввод содержит некорректные символы!')
                                         is_ok = False
@@ -119,21 +119,21 @@ class Translator(QWidget):
                             if is_ok:
                                 for letter in word:
                                     if letter in '1234567890':
-                                        res += list(cur.execute(f"""SELECT morze_num 
+                                        res += list(cur.execute(f"""SELECT morse_num 
                                         FROM numbers WHERE number == '{letter}'"""))[0][0]
                                     elif letter in '.,:;"-+=!?()':
-                                        res += list(cur.execute(f"""SELECT morze_sym FROM 
+                                        res += list(cur.execute(f"""SELECT morse_sym FROM 
                                         symbols WHERE symbol == '{letter}'"""))[0][0]
                                     elif language1 == 'русский' and letter.lower() in 'аб' \
                                                                                       'вгдеёжз' \
                                                                                       'ийклмнопр' \
                                                                                       'стуфхцчшщъ' \
                                                                                       'ыьэюя':
-                                        res += list(cur.execute(f"""SELECT morze_letter FROM 
+                                        res += list(cur.execute(f"""SELECT morse_letter FROM 
                                         russian WHERE rus_letter == '{letter}'"""))[0][0]
                                     elif language1 == 'английский' and letter in 'abcdefghigklmnop' \
                                                                                  'qrstuvwxyz':
-                                        res += list(cur.execute(f"""SELECT morze_letter FROM 
+                                        res += list(cur.execute(f"""SELECT morse_letter FROM 
                                         english WHERE eng_letter == '{letter}'"""))[0][0]
                                     else:
                                         is_ok = False

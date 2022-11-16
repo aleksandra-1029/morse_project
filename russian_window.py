@@ -56,8 +56,7 @@ class RusAlphabet(QWidget):
 
         self.btn_a.resize(40, 40)
         self.btn_a.move(10, 10)
-        self.btn_a.setStyleSheet(
-            "background-color : #ebf1f5; color : #6f7b8c")  # set button and text color
+        self.btn_a.setStyleSheet("background-color : #ebf1f5; color : #6f7b8c")
         self.btn_a.setCheckable(True)
 
         self.btn_b.resize(40, 40)
@@ -264,11 +263,11 @@ class RusAlphabet(QWidget):
 
     def rus_btn_clicked(self):
         what_btn_clicked = self.rus_btn_gr.checkedButton().text()
-        morze = \
+        m = \
             list(cur.execute(
-                f"""SELECT morze_letter FROM russian WHERE rus_letter == '{what_btn_clicked}'"""))[
+                f"""SELECT morse_letter FROM russian WHERE rus_letter == '{what_btn_clicked}'"""))[
                 0][0]
-        self.sw.setText(f'{what_btn_clicked}\n{morze}')
+        self.sw.setText(f'{what_btn_clicked}\n{m}')
 
 
 if __name__ == '__main__':

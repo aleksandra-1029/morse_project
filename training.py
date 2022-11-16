@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFont
 import sqlite3
 import random
 
-con = sqlite3.connect('morze_dictionary.db')
+con = sqlite3.connect('morse_dictionary.db')
 cur = con.cursor()
 
 
@@ -116,41 +116,41 @@ class Training(QWidget):
         language = self.type.currentText()
         if language == 'русский':
             rans1 = list(cur.execute(
-                f"""SELECT morze_letter FROM russian WHERE rus_letter == '{self.sym1.text()}'"""))[
+                f"""SELECT morse_letter FROM russian WHERE rus_letter == '{self.sym1.text()}'"""))[
                 0][0]
             rans2 = list(cur.execute(
-                f"""SELECT morze_letter FROM russian WHERE rus_letter == '{self.sym2.text()}'"""))[
+                f"""SELECT morse_letter FROM russian WHERE rus_letter == '{self.sym2.text()}'"""))[
                 0][0]
             rans3 = list(cur.execute(
-                f"""SELECT morze_letter FROM russian WHERE rus_letter == '{self.sym3.text()}'"""))[
+                f"""SELECT morse_letter FROM russian WHERE rus_letter == '{self.sym3.text()}'"""))[
                 0][0]
 
         elif language == 'английский':
             rans1 = list(cur.execute(
-                f"""SELECT morze_letter FROM english WHERE eng_letter == '{self.sym1.text()}'"""))[
+                f"""SELECT morse_letter FROM english WHERE eng_letter == '{self.sym1.text()}'"""))[
                 0][0]
             rans2 = list(cur.execute(
-                f"""SELECT morze_letter FROM english WHERE eng_letter == '{self.sym2.text()}'"""))[
+                f"""SELECT morse_letter FROM english WHERE eng_letter == '{self.sym2.text()}'"""))[
                 0][0]
             rans3 = list(cur.execute(
-                f"""SELECT morze_letter FROM english WHERE eng_letter == '{self.sym3.text()}'"""))[
+                f"""SELECT morse_letter FROM english WHERE eng_letter == '{self.sym3.text()}'"""))[
                 0][0]
 
         elif language == 'символы':
             rans1 = list(cur.execute(
-                f"""SELECT morze_sym FROM symbols WHERE symbol == '{self.sym1.text()}'"""))[0][0]
+                f"""SELECT morse_sym FROM symbols WHERE symbol == '{self.sym1.text()}'"""))[0][0]
             rans2 = list(cur.execute(
-                f"""SELECT morze_sym FROM symbols WHERE symbol == '{self.sym2.text()}'"""))[0][0]
+                f"""SELECT morse_sym FROM symbols WHERE symbol == '{self.sym2.text()}'"""))[0][0]
             rans3 = list(cur.execute(
-                f"""SELECT morze_sym FROM symbols WHERE symbol == '{self.sym3.text()}'"""))[0][0]
+                f"""SELECT morse_sym FROM symbols WHERE symbol == '{self.sym3.text()}'"""))[0][0]
 
         else:
             rans1 = list(cur.execute(
-                f"""SELECT morze_num FROM numbers WHERE number == '{self.sym1.text()}'"""))[0][0]
+                f"""SELECT morse_num FROM numbers WHERE number == '{self.sym1.text()}'"""))[0][0]
             rans2 = list(cur.execute(
-                f"""SELECT morze_num FROM numbers WHERE number == '{self.sym2.text()}'"""))[0][0]
+                f"""SELECT morse_num FROM numbers WHERE number == '{self.sym2.text()}'"""))[0][0]
             rans3 = list(cur.execute(
-                f"""SELECT morze_num FROM numbers WHERE number == '{self.sym3.text()}'"""))[0][0]
+                f"""SELECT morse_num FROM numbers WHERE number == '{self.sym3.text()}'"""))[0][0]
 
         if rans1 == self.ans1.toPlainText():
             self.ans1.setStyleSheet("background-color : #99c480")

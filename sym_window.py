@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QTextBrowser, QB
 from PyQt5.QtGui import QFont
 import sqlite3
 
-con = sqlite3.connect('morze_dictionary.db')
+con = sqlite3.connect('morse_dictionary.db')
 cur = con.cursor()
 
 
@@ -118,10 +118,10 @@ class Symbols(QWidget):
 
     def sym_btn_clicked(self):
         what_btn_clicked = self.sym_btn_gr.checkedButton().text()
-        morze = \
+        m = \
             list(cur.execute(
-                f"""SELECT morze_sym FROM symbols WHERE symbol == '{what_btn_clicked}'"""))[0][0]
-        self.sw.setText(f'{what_btn_clicked}\n{morze}')
+                f"""SELECT morse_sym FROM symbols WHERE symbol == '{what_btn_clicked}'"""))[0][0]
+        self.sw.setText(f'{what_btn_clicked}\n{m}')
 
 
 if __name__ == '__main__':

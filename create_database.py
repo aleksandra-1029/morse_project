@@ -1,10 +1,10 @@
 import sqlite3
 
-connection = sqlite3.connect('morze_dictionary.db')
+connection = sqlite3.connect('morse_dictionary.db')
 cursor = connection.cursor()
 
 cursor.execute(
-    """CREATE TABLE IF NOT EXISTS russian(rus_letter STRING PRIMARY KEY, morze_letter STRING)""")
+    """CREATE TABLE IF NOT EXISTS russian(rus_letter STRING PRIMARY KEY, morse_letter STRING)""")
 cursor.execute("""INSERT INTO russian VALUES ('а', '•-')""")
 cursor.execute("""INSERT INTO russian VALUES ('б', '-•••')""")
 cursor.execute("""INSERT INTO russian VALUES ('в', '•--')""")
@@ -40,7 +40,7 @@ cursor.execute("""INSERT INTO russian VALUES ('ю', '••--')""")
 cursor.execute("""INSERT INTO russian VALUES ('я', '•-•-')""")
 
 cursor.execute(
-    """CREATE TABLE IF NOT EXISTS english(eng_letter STRING PRIMARY KEY, morze_letter STRING)""")
+    """CREATE TABLE IF NOT EXISTS english(eng_letter STRING PRIMARY KEY, morse_letter STRING)""")
 cursor.execute("""INSERT INTO english VALUES ('a', '•-')""")
 cursor.execute("""INSERT INTO english VALUES ('b', '-•••')""")
 cursor.execute("""INSERT INTO english VALUES ('c', '-•-•')""")
@@ -68,7 +68,7 @@ cursor.execute("""INSERT INTO english VALUES ('x', '-••-')""")
 cursor.execute("""INSERT INTO english VALUES ('y', '-•--')""")
 cursor.execute("""INSERT INTO english VALUES ('z', '--••')""")
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS numbers(number STRING PRIMARY KEY, morze_num STRING)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS numbers(number STRING PRIMARY KEY, morse_num STRING)""")
 cursor.execute("""INSERT INTO numbers VALUES('0', '-----')""")
 cursor.execute("""INSERT INTO numbers VALUES('1', '•----')""")
 cursor.execute("""INSERT INTO numbers VALUES('2', '••---')""")
@@ -80,7 +80,7 @@ cursor.execute("""INSERT INTO numbers VALUES('7', '--•••')""")
 cursor.execute("""INSERT INTO numbers VALUES('8', '---••')""")
 cursor.execute("""INSERT INTO numbers VALUES('9', '----•')""")
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS symbols(symbol STRING PRIMARY KEY, morze_sym STRING)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS symbols(symbol STRING PRIMARY KEY, morse_sym STRING)""")
 cursor.execute("""INSERT INTO symbols VALUES('.', '•-•-•-')""")
 cursor.execute("""INSERT INTO symbols VALUES(',', '--••--')""")
 cursor.execute("""INSERT INTO symbols VALUES('!', '-•-•--')""")

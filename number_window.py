@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QButtonGroup, QT
 from PyQt5.QtGui import QFont
 import sqlite3
 
-con = sqlite3.connect('morze_dictionary.db')
+con = sqlite3.connect('morse_dictionary.db')
 cur = con.cursor()
 
 
@@ -104,7 +104,7 @@ class Numbers(QWidget):
     def num_btn_clicked(self):
         what_btn_clicked = self.num_btn_gr.checkedButton().text()
         m = list(cur.execute(
-            f"""SELECT morze_num FROM numbers WHERE number == '{what_btn_clicked}'"""))[0][0]
+            f"""SELECT morse_num FROM numbers WHERE number == '{what_btn_clicked}'"""))[0][0]
         self.sw.setText(f'{what_btn_clicked}\n{m}')
 
 
