@@ -63,13 +63,13 @@ class Translator(QWidget):
         self.input.move(120, 100)
         self.input.resize(450, 200)
         self.input.setStyleSheet("background-color : #ebf1f5; color : #4c5461")
-        self.input.setFont(QFont('Century Gothic', 7))
+        self.input.setFont(QFont('Century Gothic', 8))
 
         self.text4.move(10, 350)
         self.output.move(120, 350)
         self.output.resize(450, 200)
         self.output.setStyleSheet("background-color : #ebf1f5; color : #4c5461")
-        self.output.setFont(QFont('Century Gothic', 12))
+        self.output.setFont(QFont('Century Gothic', 8))
 
         self.copy.move(120, 560)
         self.copy.resize(250, 30)
@@ -90,9 +90,9 @@ class Translator(QWidget):
             if language1 == 'морзе':
                 for line in self.input.toPlainText().splitlines():
                     if is_ok:
-                        for word in line.split('   '):
+                        for word in line.split('       '):
                             if is_ok:
-                                for letter in word.split():
+                                for letter in word.split('   '):
                                     if letter in self.mnumbers:
                                         res += str(list(cur.execute(f"""SELECT number FROM numbers 
                                         WHERE morse_num == '{letter}'"""))[0][0])
@@ -139,8 +139,8 @@ class Translator(QWidget):
                                         is_ok = False
                                         self.output.setText('Ввод содержит некорректные символы!')
                                         break
-                                    res += ' '
-                                res += '   '
+                                    res += '   '
+                                res += '       '
                         res += '\n'
             if is_ok:
                 self.output.setText(res)
