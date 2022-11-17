@@ -93,6 +93,7 @@ class Translator(QWidget):
                         for word in line.split('       '):
                             if is_ok:
                                 for letter in word.split('   '):
+                                    print(letter)
                                     if letter in self.mnumbers:
                                         res += str(list(cur.execute(f"""SELECT number FROM numbers 
                                         WHERE morse_num == '{letter}'"""))[0][0])

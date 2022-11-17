@@ -97,7 +97,7 @@ class Symbols(QWidget):
         self.sw.move(100, 55)
         self.sw.resize(175, 175)
         self.sw.setStyleSheet("background-color : #f5f7f; color : #4c5461")
-        self.sw.setFont(QFont('Courier New', 23))
+        self.sw.setFont(QFont('Courier New', 14))
 
         self.sym_btn_gr.setExclusive(True)
         self.sym_btn_gr.addButton(self.btn1)

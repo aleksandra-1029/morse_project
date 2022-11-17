@@ -180,7 +180,7 @@ class EngAlphabet(QWidget):
         self.sw.move(100, 145)
         self.sw.resize(175, 175)
         self.sw.setStyleSheet("background-color : #f5f7f; color : #4c5461")
-        self.sw.setFont(QFont('Courier New', 26))
+        self.sw.setFont(QFont('Courier New', 15))
 
         self.eng_btn_gr.setExclusive(True)
         self.eng_btn_gr.addButton(self.btn_a)

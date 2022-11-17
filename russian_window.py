@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QButtonGroup, QT
 from PyQt5.QtGui import QFont
 import sqlite3
 
-con = sqlite3.connect('morze_dictionary.db')
+con = sqlite3.connect('morse_dictionary.db')
 cur = con.cursor()
 
 
@@ -222,7 +222,7 @@ class RusAlphabet(QWidget):
         self.sw.move(145, 145)
         self.sw.resize(175, 175)
         self.sw.setStyleSheet("background-color : #f5f7f")
-        self.sw.setFont(QFont('Courier New', 26))
+        self.sw.setFont(QFont('Courier New', 15))
 
         self.rus_btn_gr.setExclusive(True)
         self.rus_btn_gr.addButton(self.btn_a)
