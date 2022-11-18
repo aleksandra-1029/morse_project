@@ -1,4 +1,4 @@
-# Запустите программу create_database перед запуском проекта для создания необхадимой базы данных
+# Запустите программу create_database перед запуском проекта для создания необходимой базы данных
 
 import sys
 from PyQt5.QtWidgets import QApplication
